@@ -1,14 +1,13 @@
-import numpy as np 
-import pandas as pd 
-from sklearn.tree import DecisionTreeClassifier
-from sklearn import preprocessing
-from sklearn.model_selection import train_test_split
-from sklearn import metrics
-import matplotlib.pyplot as plt
-from six import StringIO
-import pydotplus
 import matplotlib.image as mpimg
-from sklearn import tree
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from six import StringIO
+from sklearn import metrics, preprocessing, tree
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+
+import pydotplus
 
 # load data
 df = pd.read_csv('./data/drugs.csv')
@@ -44,7 +43,7 @@ print("Decision trees's Accuracy: ", metrics.accuracy_score(y_testset, predictio
 
 # visualize the tree
 dot_data = StringIO()
-filename = "drugtree.png"
+filename = "./generated/drugtree.png"
 featureNames = df.columns[0:5]
 targetNames = df["Drug"].unique().tolist()
 out=tree.export_graphviz(drugTree,feature_names=featureNames, out_file=dot_data, class_names= np.unique(y_trainset), filled=True,  special_characters=True,rotate=False)  
