@@ -7,9 +7,9 @@ X = df[['PREGNANT_TIMES', 'PLASMA_GLUCOSE_CONCENTRATION', 'PRESSURE', 'SKIN_THIC
 y = df['CLASS'].values
 
 model = Sequential()
-model.add(Dense(12, input_dim=8, activation='relu'))
-model.add(Dense(8, activation='relu'))
-model.add(Dense(1, activation='sigmoid'))
+model.add(Dense(64, use_bias=True, input_dim=8, activation='relu'))
+model.add(Dense(32, use_bias=True, activation='relu'))
+model.add(Dense(1, use_bias=True,activation='sigmoid'))
 
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 model.summary()
