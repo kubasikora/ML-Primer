@@ -1,11 +1,10 @@
-from numpy import loadtxt
+import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense
 
-dataset = loadtxt('./data/diabetes.csv', delimiter=',')
-
-X = dataset[:, 0:8]
-y = dataset[:, 8]
+df = pd.read_csv('./data/diabetes.csv')
+X = df[['PREGNANT_TIMES', 'PLASMA_GLUCOSE_CONCENTRATION', 'PRESSURE', 'SKIN_THICKNESS', 'INSULIN', 'BMI', 'PEDIGREE', 'AGE']].values
+y = df['CLASS'].values
 
 model = Sequential()
 model.add(Dense(12, input_dim=8, activation='relu'))
